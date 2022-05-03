@@ -1,0 +1,54 @@
+﻿<Page x:Class="Sentize.Pages.SentenceResultsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sentize"
+      xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="White"
+      Title="SentenceResultsPage">
+
+    <Grid>
+        <Label Content="Sentize 2021 - Dillon Wall" Margin="10,423,10,0" VerticalAlignment="Top" FontStyle="Italic" FontWeight="Normal" HorizontalContentAlignment="Center" Height="27" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Sentence Results" HorizontalAlignment="Left" VerticalAlignment="Top" Width="189" FontSize="24" FontWeight="Normal" Margin="10,10,0,0" Height="43"/>
+        <Label Name="lbl_ImgCredits" Content="Photo by Artem Beliaikin from Pexels" HorizontalAlignment="Center" Margin="0,335,0,0" VerticalAlignment="Top" Foreground="#FF7C7C7C" FontStyle="Italic"/>
+        <Image Name="img_EmotionImg" Margin="203,68,203,120" Stretch="Fill" Source="/Sentize ;component/res/pexels-artem-beliaikin-1485637.jpg"/>
+        <Label Name="lbl_EmotionTitle" Content="Joy" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="286" FontSize="36" FontWeight="Normal" Margin="0,10,0,0" Height="58"/>
+        <Button Name="btn_Back" Content="Back" HorizontalAlignment="Left" Margin="30,387,0,0" VerticalAlignment="Top" Height="36" Width="74" FontSize="16" FontWeight="Bold" Click="btn_Back_Click"/>
+        <Button Name="btn_SendAsFeedback" Content="Send as Feedback" HorizontalAlignment="Left" Margin="621,387,0,0" VerticalAlignment="Top" Height="36" Width="148" FontSize="16" FontWeight="Bold" Click="btn_SendAsFeedback_Click"/>
+        <toolkit:Chart Name="chart_Confidence"  
+                       Canvas.Top="80"
+                       Canvas.Left="10"
+                       Background="#145DA0"  
+                       Title="Confidence"
+                       Margin="58,68,602,120">
+            <toolkit:Chart.LegendStyle>
+                <Style TargetType="toolkit:Legend">
+                    <Setter Property="Width" Value="0" />
+                </Style>
+            </toolkit:Chart.LegendStyle>
+            <toolkit:Chart.Series>
+                <toolkit:ColumnSeries IndependentValueBinding="{Binding Path=Key}" DependentValueBinding="{Binding Path=Value}"/>
+            </toolkit:Chart.Series>
+            <toolkit:Chart.Axes>
+                <toolkit:LinearAxis Orientation="Y" Minimum="0" Maximum="100" Interval="10"/>
+            </toolkit:Chart.Axes>
+        </toolkit:Chart>
+        <TextBlock Name="tb_ResultText" HorizontalAlignment="Left" Margin="602,68,0,0" Text="The sentence was predicted correctly!" TextAlignment="Justify" TextWrapping="Wrap" VerticalAlignment="Top" Height="72" Width="167" FontSize="18"/>
+        <TextBlock Name="tb_InputSentence" HorizontalAlignment="Left" Margin="602,188,0,0" Text="I am very happy today!" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="142" Width="167" FontSize="14"/>
+        <Label HorizontalAlignment="Left" VerticalAlignment="Top" Width="189" FontSize="24" FontWeight="Normal" Margin="597,145,0,0" Height="43">
+            <TextBlock TextDecorations="Underline" Text="Sentence:"/>
+        </Label>
+    </Grid>
+</Page>
